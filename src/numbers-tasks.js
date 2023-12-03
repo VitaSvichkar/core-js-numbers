@@ -18,10 +18,10 @@
  *   5, 10 => 50
  *   5, 5  => 25
  */
-function getRectangleArea(/* width, height */) {
-  throw new Error('Not implemented');
+function getRectangleArea(width, height) {
+  return width * height;
 }
-
+getRectangleArea(5, 10);
 /**
  * Returns a circumference of circle given by radius.
  *
@@ -33,10 +33,10 @@ function getRectangleArea(/* width, height */) {
  *   3.14 => 19.729201864543903
  *   0    => 0
  */
-function getCircleCircumference(/* radius */) {
-  throw new Error('Not implemented');
+function getCircleCircumference(radius) {
+  return 2 * Math.PI * radius;
 }
-
+getCircleCircumference(4);
 /**
  * Returns an average of two given numbers.
  *
@@ -49,10 +49,10 @@ function getCircleCircumference(/* radius */) {
  *  10, 0  => 5
  *  -3, 3  => 0
  */
-function getAverage(/* value1, value2 */) {
-  throw new Error('Not implemented');
+function getAverage(value1, value2) {
+  return (value1 + value2) / 2;
 }
-
+getAverage(2, 3);
 /**
  * Returns a distance between two points by cartesian coordinates.
  *
@@ -68,10 +68,10 @@ function getAverage(/* value1, value2 */) {
  *   (0,0) (1,0)    => 1
  *   (-5,0) (10,-10) => 18.027756377319946
  */
-function getDistanceBetweenPoints(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
+function getDistanceBetweenPoints(x1, y1, x2, y2) {
+  return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
 }
-
+getDistanceBetweenPoints(4, 3, 6, 7);
 /**
  * Returns a root of linear equation a*x + b = 0 given by coefficients a and b.
  *
@@ -104,12 +104,14 @@ function getLinearEquationRoot(/* a, b */) {
  *   (0,1) (0,-1)    => π
  *   (0,-1) (1,0)    => π/2
  *   (0,1) (0,1)     => 0
- *   (0,1) (1,2)     => 0
  */
-function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
+function getAngleBetweenVectors(x1, y1, x2, y2) {
+  return Math.acos(
+    ((x1 * x2 + y1 * y2) / Math.sqrt(x1 ** 2 + y1 ** 2)) *
+      Math.sqrt(x2 ** 2 + y2 ** 2)
+  );
 }
-
+getAngleBetweenVectors(3, 4, 5, 3);
 /**
  * Returns a last digit of a integer number.
  * The input parameter will always be greater than or equal to zero and will be in decimal notation.
@@ -123,10 +125,19 @@ function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
  *     5     => 5
  *     0     => 0
  */
-function getLastDigit(/* value */) {
-  throw new Error('Not implemented');
+function getLastDigit(value) {
+  if (value < 0) return false;
+  const str = value.toString();
+  const arr = Array.from(str);
+  const num = arr[arr.length - 1];
+  return num;
+  // if (value < 0) return false;
+  // const str = value.toString();
+  // const last = str.charAt(str.length - 1);
+  // const num = Number(last);
+  // return num;
 }
-
+getLastDigit(299);
 /**
  * Returns a number by given string representation.
  *
@@ -138,10 +149,10 @@ function getLastDigit(/* value */) {
  *     '37'     => 37
  * '-525.5'     => -525.5
  */
-function parseNumberFromString(/* value */) {
-  throw new Error('Not implemented');
+function parseNumberFromString(value) {
+  return Number(value);
 }
-
+parseNumberFromString('679');
 /**
  * Returns a diagonal length of the rectangular parallelepiped given by its sides a,b,c.
  *
@@ -155,10 +166,10 @@ function parseNumberFromString(/* value */) {
  *   3,3,3   => 5.196152422706632
  *   1,2,3   => 3.741657386773941
  */
-function getParallelepipedDiagonal(/* a, b, c */) {
-  throw new Error('Not implemented');
+function getParallelepipedDiagonal(a, b, c) {
+  return Math.sqrt(a ** 2 + b ** 2 + c ** 2);
 }
-
+getParallelepipedDiagonal(4, 5, 6);
 /**
  * Returns the number rounded to specified power of 10.
  *
@@ -216,10 +227,13 @@ function isPrime(/* n */) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
+function toNumber(value, def) {
+  const num = Number(value);
+  // if (typeof num === 'number') return num;
+  if (!Number.isNaN(num)) return num;
+  return def;
 }
-
+toNumber('7', 0);
 /**
  * Returns the cube of the given number.
  *
@@ -231,10 +245,10 @@ function toNumber(/* value, def */) {
  *   -2 => -8
  *   0  => 0
  */
-function getCube(/* num */) {
-  throw new Error('Not implemented');
+function getCube(num) {
+  return num ** 3;
 }
-
+getCube(7);
 /**
  * Returns the Fibonacci number located at the index position.
  *
@@ -263,10 +277,14 @@ function getFibonacciNumber(/* index */) {
  *   10 => 55 // (1+2+3+...+10)
  *   1  => 1
  */
-function getSumToN(/* n */) {
-  throw new Error('Not implemented');
+function getSumToN(n) {
+  let sum = 0;
+  for (let i = 0; i <= n; i += 1) {
+    sum += i;
+  }
+  return sum;
 }
-
+getSumToN(6);
 /**
  * Returns the sum of the digits of a given number.
  *
@@ -293,10 +311,12 @@ function getSumOfDigits(/* num */) {
  *   16  => true
  *   15  => false
  */
-function isPowerOfTwo(/* num */) {
-  throw new Error('Not implemented');
+function isPowerOfTwo(num) {
+  const sqrt = Math.sqrt(num);
+  if (2 ** sqrt === num) return true;
+  return false;
 }
-
+isPowerOfTwo(4);
 /**
  * Returns the sine of a number.
  *
