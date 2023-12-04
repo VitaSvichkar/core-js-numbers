@@ -84,10 +84,10 @@ getDistanceBetweenPoints(4, 3, 6, 7);
  *   x + 8 = 0       => -8
  *   5*x = 0         => 0
  */
-function getLinearEquationRoot(/* a, b */) {
-  throw new Error('Not implemented');
+function getLinearEquationRoot(a, b) {
+  return -(b / a);
 }
-
+getLinearEquationRoot(5, 5);
 /**
  * Returns an angle (in radians) between two vectors given by xi and yi,
  * coordinates in Cartesian plane.
@@ -312,7 +312,8 @@ function getSumOfDigits(/* num */) {
  *   15  => false
  */
 function isPowerOfTwo(num) {
-  const sqrt = Math.sqrt(num);
+  let sqrt = Math.sqrt(num);
+  sqrt = Math.ceil(sqrt);
   if (2 ** sqrt === num) return true;
   return false;
 }
@@ -327,10 +328,10 @@ isPowerOfTwo(4);
  *   0 => 0
  *   Math.PI / 2 => 1
  */
-function getSine(/* num */) {
-  throw new Error('Not implemented');
+function getSine(num) {
+  return Math.sin(num);
 }
-
+getSine(9);
 /**
  * Returns a string representation of a number in a specified base (radix).
  *
@@ -342,10 +343,10 @@ function getSine(/* num */) {
  * 255, 16 => 'ff'
  * 2, 2    => '10'
  */
-function numberToStringInBase(/* number, base */) {
-  throw new Error('Not implemented');
+function numberToStringInBase(number, base) {
+  return number.toString(base);
 }
-
+numberToStringInBase(4, 2);
 /**
  * Returns a string representation of a number in exponential notation.
  *
@@ -356,10 +357,10 @@ function numberToStringInBase(/* number, base */) {
  * @example:
  * 12345, 2    => '1.23e+4'
  */
-function toExponential(/* number, fractionDigits */) {
-  throw new Error('Not implemented');
+function toExponential(number, fractionDigits) {
+  return number.toExponential(fractionDigits);
 }
-
+toExponential(1235);
 /**
  * Returns a string representation of a number in fixed-point notation.
  *
@@ -371,10 +372,10 @@ function toExponential(/* number, fractionDigits */) {
  * 12345, 2    => '12345.00'
  * 12.345, 1   => '12.3'
  */
-function toFixed(/* number, fractionDigits */) {
-  throw new Error('Not implemented');
+function toFixed(number, fractionDigits) {
+  return number.toFixed(fractionDigits);
 }
-
+toFixed(1234.454, 2);
 /**
  * Returns a string representation of a number in normal (fixed-point or exponential)
  * notation rounded to precision significant digits.
@@ -387,10 +388,10 @@ function toFixed(/* number, fractionDigits */) {
  * 12345, 7    => '12345.00'
  * 12.345, 4   => '12.35'
  */
-function toPrecision(/* number, precision */) {
-  throw new Error('Not implemented');
+function toPrecision(number, precision) {
+  return number.toPrecision(precision);
 }
-
+toPrecision(13444);
 /**
  * Returns the primitive value of a Number object.
  *
@@ -401,10 +402,10 @@ function toPrecision(/* number, precision */) {
  * new Number(5) => 5
  * Number(-5)    => -5
  */
-function getNumberValue(/* number */) {
-  throw new Error('Not implemented');
+function getNumberValue(number) {
+  return number.valueOf();
 }
-
+getNumberValue(44);
 /**
  * Returns a boolean value indicating whether the parameter is a number or not.
  *
@@ -420,10 +421,11 @@ function getNumberValue(/* number */) {
  * 5        => true
  * '5'      => false
  */
-function isNumber(/* number */) {
-  throw new Error('Not implemented');
+function isNumber(number) {
+  if (!Number.isFinite(number)) return false;
+  return true;
 }
-
+isNumber(99);
 /**
  * Returns a boolean value indicating whether a number is an integer or not.
  *
